@@ -23,8 +23,6 @@ export default function Home({ initialPosts }) {
         }
     };
 
-    console.log(posts);
-
     const columns = useMemo(() => [
         {
             id: 'title',
@@ -39,7 +37,6 @@ export default function Home({ initialPosts }) {
                     <Link href={`/posts/${row.original.id}`}>
                         <Button variant="outline-primary mr-2" size="sm">Show</Button>
                     </Link>
-
                     <Button variant="outline-danger" size="sm" onClick={() => handleDelete(row.original)}>Delete</Button>
                 </div>
             )

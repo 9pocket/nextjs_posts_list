@@ -1,9 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '@/styles/PostTable.module.css'
+import styles from '@/styles/PostTable.module.css';
 import BTable from 'react-bootstrap/Table';
-import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table'
-import {Button, Pagination} from "react-bootstrap";
+import { useTable, useSortBy, usePagination, useRowSelect } from 'react-table';
+import { Button, Pagination } from 'react-bootstrap';
 
 const IndeterminateCheckbox = React.forwardRef(
     ({ indeterminate, ...rest }, ref) => {
@@ -31,7 +31,6 @@ export function PostTable({ columns, data, initialState, handleShowSelected }) {
         prepareRow,
         page, // Instead of using 'rows', we'll use page,
         // which has only the rows for the active page
-
         // The rest of these things are super handy, too ;)
         canPreviousPage,
         canNextPage,
@@ -119,42 +118,12 @@ export function PostTable({ columns, data, initialState, handleShowSelected }) {
                     <Pagination.Next onClick={() => nextPage()} disabled={!canNextPage} />
                     <Pagination.Last onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} />
                 </Pagination>
-                <span>
-          Page{' '}
-                    <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>{' '}
-        </span>
-        {/*        <span>*/}
-        {/*  | Go to page:{' '}*/}
-        {/*            <input*/}
-        {/*                type="number"*/}
-        {/*                defaultValue={pageIndex + 1}*/}
-        {/*                onChange={e => {*/}
-        {/*                    const page = e.target.value ? Number(e.target.value) - 1 : 0*/}
-        {/*                    gotoPage(page)*/}
-        {/*                }}*/}
-        {/*                style={{ width: '100px' }}*/}
-        {/*            />*/}
-        {/*</span>{' '}*/}
-        {/*        <select*/}
-        {/*            value={pageSize}*/}
-        {/*            onChange={e => {*/}
-        {/*                setPageSize(Number(e.target.value))*/}
-        {/*            }}*/}
-        {/*        >*/}
-        {/*            {[10, 20, 30, 40, 50].map(pageSize => (*/}
-        {/*                <option key={pageSize} value={pageSize}>*/}
-        {/*                    Show {pageSize}*/}
-        {/*                </option>*/}
-        {/*            ))}*/}
-        {/*        </select>*/}
-        {/*        */}
+                <span>Page{' '}<strong>{pageIndex + 1} of {pageOptions.length}</strong>{' '}</span>
             </div>
             <div>
                 Currently there are <strong>{ Object.keys(selectedRowIds).length }</strong> posts selected of {data.length}
             </div>
-            <div>
+            <div style={{ margin: '1em 0' }}>
                 <Button variant="outline-primary" onClick={() => handleShowSelected(Object.keys(selectedRowIds).join(','))}>Show selected posts</Button>
             </div>
         </div>
